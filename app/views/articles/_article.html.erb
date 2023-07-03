@@ -1,15 +1,17 @@
 <div class="m-5">
   <div class="m-5 mb-2">
-    <p class="font-bold text-xs">Gerard Cruz</p>
+    <p class="font-bold text-xs text-slate-500">Gerard Cruz</p>
   </div>
 
   <div class="my-2 mx-5">
-    <p class="font-medium text-lg">
-      <%= article.name %>
-    </p>
-    <p class="text-slate-400">
-      <%= article.body %>
-    </p>
+    <%= link_to show_article_path(article.id) do %>
+      <p class="font-medium text-lg">
+        <%= article.name %>
+      </p>
+      <p class="text-slate-500 font-serif text-sm">
+        <%= article.preview %>...
+      </p>
+    <% end %>
   </div>
 
   <div class="my-2 mx-5">

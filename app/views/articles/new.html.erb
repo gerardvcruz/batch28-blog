@@ -1,12 +1,14 @@
-<h1>Create New Article</h1>
+<div class="m-10">
+  <h1>Create New Article</h1>
 
-<p>
-  <% if @article.errors.any? %>
-    <% @article.errors.full_messages.each do |message| %>
-      <p><%= message %></p>
+  <p>
+    <% if @article.errors.any? %>
+      <% @article.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
     <% end %>
-  <% end %>
-</p>
+  </p>
 
-<%= render 'form' %>
+  <%= render 'form' %>
+</div>
 

@@ -1,21 +1,15 @@
 <%= form_with scope: :article, url: create_article_path do |f| %>
-  <p>
+  <div class="m-2">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
+    <%= f.text_field :name, class: "placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 p-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" %>
+  </div>
 
-  <p>
+  <div class="m-2">
     <%= f.label :body %><br>
-    <%= f.text_field :body %>
-  </p>
+    <%= f.text_area :body, class: "placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" %>
+  </div>
 
-
-  <p>
-    <%= f.label :id %><br>
-    <%= f.text_field :id %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="m-2">
+    <%= f.submit "Save Article", class: "px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm" %>
+  </div>
 <% end %>

@@ -1,9 +1,11 @@
 <div class="p-3 border-b-2 flex">
   <div class="w-40 self-start">
-    <img src="https://miro.medium.com/v2/resize:fit:8978/1*s986xIGqhfsN8U--09_AdA.png" alt="">
+    <%= link_to root_path do %>
+      <img src="https://miro.medium.com/v2/resize:fit:8978/1*s986xIGqhfsN8U--09_AdA.png" alt="">
+    <% end %>
   </div>
 
-  <div class="flex-0 m-2 self-end">
+  <div class="flex-0 m-2 place-end">
     <%= link_to 'New Article', new_article_path %>
   </div>
 </div>
