@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
 
-    @random_article = Article.order("RANDOM()").first
+    @trending_articles = Article.order("RANDOM()")[0..5]
 
     render :index
   end 

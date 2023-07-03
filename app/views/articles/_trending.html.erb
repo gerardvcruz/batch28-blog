@@ -1,0 +1,13 @@
+<div class="flex flex-wrap p-10 border-b-2">
+  <p class="text-md w-100">
+    Trending on Medium
+  </p>
+
+  <div class="flex flex-wrap w-100">
+    <% articles.each do |article| %>
+      <div class="w-1/2 flex-0">
+        <%= render 'article', article: article %>
+      </div>
+    <% end %>
+  </div>
+</div>
