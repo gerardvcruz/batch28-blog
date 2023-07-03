@@ -1,3 +1,18 @@
-  <p>ID: <%= article.id %></p>
-  <p>Name: <%= article.name %></p>
-  <p>Body: <%= article.body %></p><br>
+<div class="m-10">
+  <div class="m-5 mb-2">
+    <p class="font-bold text-xs">Gerard Cruz</p>
+  </div>
+
+  <div class="my-2 mx-5">
+    <p class="font-bold text-xl">
+      <%= article.name %>
+    </p>
+    <p class="text-slate-400">
+      <%= article.body %>
+    </p>
+  </div>
+
+  <div class="my-2 mx-5 ">
+    <p class="text-xs text-slate-400"><%= article.created_at.strftime("%b %d") %></p>
+  </div>
+</div>
