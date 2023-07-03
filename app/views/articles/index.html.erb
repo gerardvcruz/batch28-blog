@@ -1,0 +1,13 @@
+<h1>All Articles</h1>
+
+<p>Random Article of the day:</p>
+<p><%= @random_article.name %></p>
+
+<%= link_to 'New Article', new_article_path %>
+
+<br>
+<br>
+
+<% @articles.each do |article| %>
+  <%= render 'article', article: article %>
+<% end %>

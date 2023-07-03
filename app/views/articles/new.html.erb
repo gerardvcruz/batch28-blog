@@ -1,0 +1,12 @@
+<h1>Create New Article</h1>
+
+<p>
+  <% if @article.errors.any? %>
+    <% @article.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  <% end %>
+</p>
+
+<%= render 'form' %>
+
