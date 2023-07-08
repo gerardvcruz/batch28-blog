@@ -1,0 +1,16 @@
+<div class="my-10 mx-20">
+  <%= render 'comments/form' %>
+
+  <div class="p-5"></div>
+
+  <% @article.comments.each do |comment| %>
+    <% if comment.persisted? %>
+      <p>
+        <%= comment.body %>
+      </p>
+      <p class="text-sm text-slate-300 mb-5">
+        <%= comment.created_at.strftime("%b %d, %y") %>
+      </p>
+    <% end %> 
+  <% end %>
+</div>

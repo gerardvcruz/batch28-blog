@@ -1,5 +1,7 @@
 <%= render 'trending', articles: @trending_articles %>
-
+<p class="m-10 text-xl">
+  All Articles
+</p>
 <% @articles.each do |article| %>
   <%= render 'article', article: article %>
 <% end %>

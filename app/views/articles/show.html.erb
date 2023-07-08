@@ -1,9 +1,11 @@
-<div class="my-10 mx-20">
+<div class="my-10 mx-20 pb-10 border-b-2">
   <p class="text-xl font-medium mb-5">
     <%= @article.name %>
   </p>
 
   <p class="text-sm font-serif">
-    <%= @article.body %> 
+    <%= raw @article.body %> 
   </p>
 </div>
+
+<%= render 'comments' %>

@@ -17,10 +17,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create post" do
     assert_difference("Post.count") do
-      post posts_url, params: { post: { category: @post.category, content: @post.content, title: @post.title } }
+      post posts_url, params: { post: { category: @post.category, content: @post.content, title: "Unique Title" } }
     end
 
     assert_redirected_to post_url(Post.last)
+  end
+
+  test "should not create an invalid post" do
+    # repeat title, should not save
+    post posts_url, params: { post: { category: @post.category, content: @post.content, title: @post.title } }
+
+    assert_response :unprocessable_entity
   end
 
   test "should show post" do
@@ -36,6 +43,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "should update post" do
     patch post_url(@post), params: { post: { category: @post.category, content: @post.content, title: @post.title } }
     assert_redirected_to post_url(@post)
+  end
+
+  test "should not update post with non unique title" do
+    post posts_url, params: { post: { category: @post.category, content: @post.content, title: "Unique Title" } }
+    patch post_url(@post), params: { post: { category: @post.category, content: @post.content, title: "Unique Title" } }
+    assert_response :unprocessable_entity
   end
 
   test "should destroy post" do

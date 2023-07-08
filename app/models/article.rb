@@ -4,7 +4,9 @@ class Article < ApplicationRecord
   validates :body, presence: true,
                    length: { minimum: 5 }
 
-  after_save :generate_preview
+  has_many :comments
+
+  before_save :generate_preview
 
   def generate_preview
     self.preview = self.body[0..64]

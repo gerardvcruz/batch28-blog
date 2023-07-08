@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comment = @article.comments.build # Comment.new(article_id: @article.id)
   end
 
   def new

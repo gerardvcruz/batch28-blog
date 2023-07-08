@@ -45,6 +45,7 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
+# bundle add tailwindcss-rails
 gem "tailwindcss-rails"
 
 gem "foreman"
@@ -73,4 +74,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  gem "simplecov"
 end
