@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
 
     @trending_articles = Article.order("RANDOM()")[0..5]
 
-    render :index
+    render json: @articles
+    
   end 
 
   def show
