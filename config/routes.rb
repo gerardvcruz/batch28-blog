@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  root 'articles#index'
+  # root 'articles#index'
 
   resources :posts
 
   # resources :articles do
   #   resources :comments
   # end 
+
+  # localhost:3000/auth
+  post '/auth/signup' => 'auth#signup'
 
   # localhost:3000/articles
   get '/articles' => 'articles#index', defaults: { format: 'json' }
