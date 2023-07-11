@@ -1,11 +1,12 @@
 class ArticlesController < ApplicationController
+  before_action :check_auth
+
   def index
     @articles = Article.all
 
     @trending_articles = Article.order("RANDOM()")[0..5]
 
     render json: @articles
-    
   end 
 
   def show

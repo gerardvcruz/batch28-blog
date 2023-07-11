@@ -12,13 +12,20 @@ class AuthController < ApplicationController
     end
   end
 
-  def login
-    
+  def signin
+    if @user_token = User.authenticate(signin_params)
+      render json: { token: @user_token }
+    else
+      render json: "no", status: 404
+    end
   end
-
 
   private
   def signup_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def signin_params
+    params.require(:user).permit(:email, :password)
   end
 end

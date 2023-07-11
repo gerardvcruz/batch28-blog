@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # localhost:3000/auth
   post '/auth/signup' => 'auth#signup'
+  post '/auth/signin' => 'auth#signin'
 
   # localhost:3000/articles
   get '/articles' => 'articles#index', defaults: { format: 'json' }
