@@ -4,6 +4,7 @@ class Article < ApplicationRecord
   validates :body, presence: true,
                    length: { minimum: 5 }
 
+  belongs_to :user # via user_id foreign key
   has_many :comments
 
   before_save :generate_preview

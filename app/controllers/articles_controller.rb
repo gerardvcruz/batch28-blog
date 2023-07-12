@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :check_auth
+  before_action :check_authentication
+  before_action :check_authorization, except: [:show]
 
   def index
     @articles = Article.all
@@ -20,6 +21,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user_id = @current_user.id
 
     if @article.save
       redirect_to articles_path
@@ -41,5 +43,11 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:name, :body)
+  end
+
+  def check_authorization
+    unless @current_user.admin?
+      unauthorized
+    end
   end
 end

@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_11_112800) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_121227) do
   create_table "articles", force: :cascade do |t|
     t.string "name"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "preview"
+    t.integer "user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -41,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_112800) do
     t.datetime "updated_at", null: false
     t.string "token"
     t.datetime "token_expiration"
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

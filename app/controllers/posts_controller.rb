@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :check_authentication
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
