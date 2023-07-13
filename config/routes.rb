@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for(:readers)
+  # => 
+    # post '/reader/sign_up' => 'reader#sign_up'
+    # post '/reader/sign_in' => 'reader#sign_in'
+
   # root 'articles#index'
 
   resources :posts
