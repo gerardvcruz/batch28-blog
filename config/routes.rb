@@ -4,13 +4,13 @@ Rails.application.routes.draw do
     # post '/reader/sign_up' => 'reader#sign_up'
     # post '/reader/sign_in' => 'reader#sign_in'
 
-  # root 'articles#index'
+  root 'articles#index'
 
   resources :posts
 
-  # resources :articles do
-  #   resources :comments
-  # end 
+  resources :articles do
+    resources :comments
+  end 
 
   # localhost:3000/auth
   get '/auth/current' => 'auth#current'
@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   # end
 
   # localhost:3000/articles
-  get '/articles' => 'articles#index', defaults: { format: 'json' }
-  get '/articles/new' => 'articles#new', as: 'new_article' # => new_article_path
-  get '/articles/:id' => 'articles#show', as: 'article'
-  post '/articles' => 'articles#create', as: 'create_article' # => create_article_path
+  # get '/articles' => 'articles#index', defaults: { format: 'json' }
+  # get '/articles/new' => 'articles#new', as: 'new_article' # => new_article_path
+  # get '/articles/:id' => 'articles#show', as: 'article'
+  # post '/articles' => 'articles#create', as: 'create_article' # => create_article_path
 end

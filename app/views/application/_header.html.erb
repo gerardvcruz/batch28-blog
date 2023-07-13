@@ -8,4 +8,12 @@
   <div class="flex-0 m-2 place-end">
     <%= link_to 'New Article', new_article_path %>
   </div>
+
+  <div class="flex-0 m-2 place-end">
+    <% if reader_signed_in? %>
+      <%= button_to "Sign out", destroy_reader_session_path, method: :delete  %>
+    <% else %>
+      <%= button_to "Sign in", new_reader_session_path %>
+    <% end %>
+  </div>
 </div>

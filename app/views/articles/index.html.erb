@@ -1,7 +1,15 @@
 <%= render 'trending', articles: @trending_articles %>
+
 <p class="m-10 text-xl">
   All Articles
 </p>
-<% @articles.each do |article| %>
-  <%= render 'article', article: article %>
+
+<% if reader_signed_in? %>
+  <% @articles.each do |article| %>
+    <%= render 'article', article: article %>
+  <% end %>
+<% else %>
+  <p class="m-10 text-xl">
+    You must be logged in to view paid articles
+  </p>
 <% end %>

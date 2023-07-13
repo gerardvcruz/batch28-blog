@@ -1,13 +1,25 @@
 class ArticlesController < ApplicationController
-  before_action :check_authentication
-  before_action :check_authorization, except: [:show]
+  # devise
+  before_action :authenticate_reader!, except: :index
+
+  # custom auth
+  # before_action :check_authentication
+  # before_action :check_authorization, except: [:show]
 
   def index
+    # authenticate_reader!  
+    #   session_id exists?
+    #   check the headers...
+    #   find the user with the csrf token...
+
     @articles = Article.all
 
     @trending_articles = Article.order("RANDOM()")[0..5]
 
-    render json: @articles
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @articles.json }
+    end
   end 
 
   def show
