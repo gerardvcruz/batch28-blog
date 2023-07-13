@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
   def check_authentication
     # render json: { token: "not found" } if request.headers['Authorization'].nil?
 
