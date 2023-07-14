@@ -2,13 +2,10 @@ require "securerandom"
 require "bcrypt"
 
 class User < ApplicationRecord
-  attr_accessor :password, :password_confirmation
-
   include BCrypt
 
   has_many :articles
 
-  before_create :verify_password
   after_create :generate_token
 
   def password
@@ -39,12 +36,17 @@ class User < ApplicationRecord
     self.save
   end
 
-  def verify_password
-    if self.password == self.password_confirmation
+  def generate_reset_password_token!
+    self.reset_password_token = SecureRandom.base64[0..32];
+
+    self.save
+  end
+
+  def verify_password(password, password_confirmation)
+    if password == password_confirmation
       self.password_digest = BCrypt::Password.create(password)
     end
   end
-
 
   def token_expired?
     token_expiration < Time.now

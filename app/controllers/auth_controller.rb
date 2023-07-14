@@ -5,7 +5,7 @@ class AuthController < ApplicationController
   def signup
     @user = User.new(signup_params)
     
-    if @user.verify_password
+    if @user.verify_password(signup_params[:password], signup_params[:password_confirmation])
       if @user.save
         render json: { token: @user.token }
       else
@@ -33,6 +33,36 @@ class AuthController < ApplicationController
       render json: { signout: true }
     else
       render json: { error: "not found"}
+    end
+  end
+
+  def reset_password_request
+    user = User.find_by_email(params[:email])
+
+    if user.nil?
+      render json: { error: "not found" }, status: 404
+    else
+      user.generate_reset_password_token!
+
+      render json: { token: user.reset_password_token }, status: 200
+    end
+  end
+
+  def reset_password
+    user = User.find_by_reset_password_token(params[:password_token])
+
+    if user.nil?
+
+    else
+      if user.verify_password(params[:password], params[:password_confirmation])
+        if user.save
+          render json: { success: true }
+        else
+          render json: { errors: user.errors }
+        end
+      else
+        render json: { error: "passwords don't match"}
+      end
     end
   end
 

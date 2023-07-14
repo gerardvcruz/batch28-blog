@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post '/auth/signup' => 'auth#signup'
   post '/auth/signin' => 'auth#signin'
   post '/auth/signout' => 'auth#signout'
+  post '/auth/reset_password_request' => 'auth#reset_password_request'
+  post '/auth/reset_password' => 'auth#reset_password'
 
   # scope :auth do
   #   get '/current' => 'auth#current'
